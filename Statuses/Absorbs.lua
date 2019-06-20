@@ -57,7 +57,9 @@ function GridStatusAbsorbs:OnStatusEnable(status)
 	if status == "alert_absorbs" then
 		self:RegisterEvent("UNIT_HEALTH", "UpdateUnit")
 		self:RegisterEvent("UNIT_MAXHEALTH", "UpdateUnit")
-		self:RegisterEvent("UNIT_ABSORB_AMOUNT_CHANGED", "UpdateUnit")
+        if not Grid:IsClassicWow() then
+		    self:RegisterEvent("UNIT_ABSORB_AMOUNT_CHANGED", "UpdateUnit")
+        end
 		self:UpdateAllUnits()
 	end
 end
@@ -66,7 +68,9 @@ function GridStatusAbsorbs:OnStatusDisable(status)
 	if status == "alert_absorbs" then
 		self:UnregisterEvent("UNIT_HEALTH")
 		self:UnregisterEvent("UNIT_MAXHEALTH")
-		self:UnregisterEvent("UNIT_ABSORB_AMOUNT_CHANGED")
+        if not Grid:IsClassicWow() then
+		    self:UnregisterEvent("UNIT_ABSORB_AMOUNT_CHANGED")
+        end
 		self.core:SendStatusLostAllUnits("alert_absorbs")
 	end
 end
@@ -89,8 +93,11 @@ function GridStatusAbsorbs:UpdateUnit(event, unit)
 
 	local guid = UnitGUID(unit)
 	if not GridRoster:IsGUIDInRaid(guid) then return end
-
-	local amount = UnitIsVisible(unit) and UnitGetTotalAbsorbs(unit) or 0
+    if Grid:IsClassicWow() then
+	    local mount = 0
+    else
+        local amount = UnitIsVisible(unit) and UnitGetTotalAbsorbs(unit) or 0
+    end
 	if amount > 0 then
 		local maxHealth = UnitHealthMax(unit)
 		if (amount / maxHealth) > settings.minimumValue then

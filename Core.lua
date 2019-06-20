@@ -198,6 +198,14 @@ Grid.modulePrototype = {
 	registeredModules = { },
 }
 
+function Grid:IsClassicWow()
+	local gameVersion = GetBuildInfo()
+	if (gameVersion:match ("%d") == "1") then
+		return true
+	end
+	return false
+end
+
 function Grid.modulePrototype:OnInitialize()
 	if not self.db then
 		self.db = Grid.db:RegisterNamespace(self.moduleName, { profile = self.defaultDB or { } })
@@ -365,10 +373,11 @@ function Grid:OnInitialize()
 
 	self.options.args.profile = LibStub("AceDBOptions-3.0"):GetOptionsTable(self.db)
 	self.options.args.profile.order = -3
-
-	local LibDualSpec = LibStub("LibDualSpec-1.0")
-	LibDualSpec:EnhanceDatabase(self.db, GRID)
-	LibDualSpec:EnhanceOptions(self.options.args.profile, self.db)
+    if not Grid:IsClassicWow() then
+	  local LibDualSpec = LibStub("LibDualSpec-1.0")
+	  LibDualSpec:EnhanceDatabase(self.db, GRID)
+	  LibDualSpec:EnhanceOptions(self.options.args.profile, self.db)
+    end
 
 	LibStub("AceConfigRegistry-3.0"):RegisterOptionsTable(GRID, self.options)
 

@@ -173,12 +173,16 @@ function GridStatusRole:UpdateAllUnits(event)
 end
 
 function GridStatusRole:UpdateUnit(event, unit, guid)
-	local role = UnitGroupRolesAssigned(unit) or "NONE"
+    if Grid.IsClassicWow() then
+	    local role = "None"
+    else
+        local role = UnitGroupRolesAssigned(unit) or "NONE"
+    end
 	self:Debug("UpdateUnit", event, unit, role)
-
+    
 	local settings = self.db.profile.role
 	local roleSettings = settings[role]
-
+    
 	if roleSettings and roleSettings.enable and not (roleSettings.hideInCombat and UnitAffectingCombat("player")) then
 		self.core:SendStatusGained(guid, "role",
 			settings.priority,

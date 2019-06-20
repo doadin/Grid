@@ -66,8 +66,10 @@ function GridStatusName:OnStatusEnable(status)
 
 	self:RegisterEvent("UNIT_NAME_UPDATE", "UpdateUnit")
 	self:RegisterEvent("UNIT_PORTRAIT_UPDATE", "UpdateUnit")
-	self:RegisterEvent("UNIT_ENTERED_VEHICLE", "UpdateVehicle")
-	self:RegisterEvent("UNIT_EXITED_VEHICLE", "UpdateVehicle")
+    if not Grid:IsClassicWow() then
+	    self:RegisterEvent("UNIT_ENTERED_VEHICLE", "UpdateVehicle")
+	    self:RegisterEvent("UNIT_EXITED_VEHICLE", "UpdateVehicle")
+    end
 	self:RegisterEvent("PLAYER_ENTERING_WORLD", "UpdateAllUnits")
 
 	self:RegisterMessage("Grid_UnitJoined", "UpdateGUID")
@@ -84,8 +86,10 @@ function GridStatusName:OnStatusDisable(status)
 
 	self:UnregisterEvent("UNIT_NAME_UPDATE")
 	self:UnregisterEvent("UNIT_PORTRAIT_UPDATE")
-	self:UnregisterEvent("UNIT_ENTERED_VEHICLE")
-	self:UnregisterEvent("UNIT_EXITED_VEHICLE")
+    if not Grid:IsClassicWow() then
+	    self:UnregisterEvent("UNIT_ENTERED_VEHICLE")
+	    self:UnregisterEvent("UNIT_EXITED_VEHICLE")
+    end
 	self:UnregisterEvent("PLAYER_ENTERING_WORLD")
 
 	self:UnregisterMessage("Grid_UnitJoined")

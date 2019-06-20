@@ -71,7 +71,9 @@ function GridStatusHeals:OnStatusEnable(status)
 	if status == "alert_heals" then
 		self:RegisterEvent("UNIT_HEALTH", "UpdateUnit")
 		self:RegisterEvent("UNIT_MAXHEALTH", "UpdateUnit")
-		self:RegisterEvent("UNIT_HEAL_PREDICTION", "UpdateUnit")
+        if not Grid:IsClassicWow() then
+		    self:RegisterEvent("UNIT_HEAL_PREDICTION", "UpdateUnit")
+        end
 		self:UpdateAllUnits()
 	end
 end
@@ -80,7 +82,9 @@ function GridStatusHeals:OnStatusDisable(status)
 	if status == "alert_heals" then
 		self:UnregisterEvent("UNIT_HEALTH")
 		self:UnregisterEvent("UNIT_MAXHEALTH")
-		self:UnregisterEvent("UNIT_HEAL_PREDICTION")
+        if not Grid:IsClassicWow() then
+		    self:UnregisterEvent("UNIT_HEAL_PREDICTION")
+        end
 		self.core:SendStatusLostAllUnits("alert_heals")
 	end
 end
@@ -105,7 +109,11 @@ function GridStatusHeals:UpdateUnit(event, unit)
 	if not GridRoster:IsGUIDInRaid(guid) then return end
 
 	if UnitIsVisible(unit) and not UnitIsDeadOrGhost(unit) then
-		local incoming = UnitGetIncomingHeals(unit) or 0
+        if Grid:IsClassicWow() then
+		    local incoming = 0
+        else
+            local incoming = UnitGetIncomingHeals(unit) or 0
+        end
 		if incoming > 0 then
 			self:Debug("UpdateUnit", unit, incoming, UnitGetIncomingHeals(unit, "player") or 0, format("%.2f%%", incoming / UnitHealthMax(unit) * 100))
 		end

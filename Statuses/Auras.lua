@@ -200,22 +200,24 @@ GridStatusAuras.defaultDB = {
 	---------------------
 	-- Druid
 	---------------------
-	[GridStatusAuras:StatusForSpell("Lifebloom", true)] = {
-		-- 33763
-		desc = format(L["Buff: %s"], spell_names["Lifebloom"]),
-		buff = spell_names["Lifebloom"],
-		text = GridStatusAuras:TextForSpell(spell_names["Lifebloom"]),
-		color = { r = 0.3, g = 0.7, b = 0, a = 1 },
-		durationColorLow = { r = 1, g = 0, b = 0, a = 1 },
-		durationColorMiddle = { r = 0.21, g = 0.49, b = 0, a = 1 },
-		durationColorHigh = { r = 0.3, g = 0.7, b = 0, a = 1 },
-		countColorLow = { r = 1, g = 0, b = 0, a = 1 },
-		countColorMiddle = { r = 1, g = 1, b = 0, a = 1 },
-		countColorHigh = { r = 0, g = 1, b = 0, a = 1 },
-		countLow = 1,
-		countHigh = 2,
-		mine = true,
-	},
+    if not Grid:IsClassicWow() then
+	    [GridStatusAuras:StatusForSpell("Lifebloom", true)] = {
+	    	-- 33763
+	    	desc = format(L["Buff: %s"], spell_names["Lifebloom"]),
+	    	buff = spell_names["Lifebloom"],
+	    	text = GridStatusAuras:TextForSpell(spell_names["Lifebloom"]),
+	    	color = { r = 0.3, g = 0.7, b = 0, a = 1 },
+	    	durationColorLow = { r = 1, g = 0, b = 0, a = 1 },
+	    	durationColorMiddle = { r = 0.21, g = 0.49, b = 0, a = 1 },
+	    	durationColorHigh = { r = 0.3, g = 0.7, b = 0, a = 1 },
+	    	countColorLow = { r = 1, g = 0, b = 0, a = 1 },
+	    	countColorMiddle = { r = 1, g = 1, b = 0, a = 1 },
+	    	countColorHigh = { r = 0, g = 1, b = 0, a = 1 },
+	    	countLow = 1,
+	    	countHigh = 2,
+	    	mine = true,
+	    },
+    end
 	[GridStatusAuras:StatusForSpell("Regrowth", true)] = {
 		-- 8936
 		desc = format(L["Buff: %s"], spell_names["Regrowth"]),
@@ -238,132 +240,138 @@ GridStatusAuras.defaultDB = {
 		durationColorHigh = { r = 0, g = 0.3, b = 0.7, a = 1 },
 		mine = true,
 	},
-	[GridStatusAuras:StatusForSpell("Rejuvenation (Germination)", true)] = {
-		-- 155777
-		desc = format(L["Buff: %s"], spell_names["Rejuvenation (Germination)"]),
-		buff = spell_names["Rejuvenation (Germination)"],
-		text = GridStatusAuras:TextForSpell(spell_names["Rejuvenation (Germination)"]),
-		color = { r = 0.66, g = 0.55, b = 1, a = 1 },
-		durationColorLow = { r = 0.66, g = 0.55, b = 1, a = 1 },
-		durationColorMiddle = { r = 0.46, g = 0.38, b = 0.7, a = 1 },
-		durationColorHigh = { r = 0.33, g = 0.27, b = 0.5, a = 1 },
-		mine = true,
-	},
-	[GridStatusAuras:StatusForSpell("Wild Growth", true)] = {
-		-- 48438
-		desc = format(L["Buff: %s"], spell_names["Wild Growth"]),
-		buff = spell_names["Wild Growth"],
-		text = GridStatusAuras:TextForSpell(spell_names["Wild Growth"]),
-		color = { r = 0.56, g = 0.85, b = 0.62, a = 1 },
-		durationColorLow = { r = 0.56, g = 0.85, b = 0.62, a = 1 },
-		durationColorMiddle = { r = 0.39, g = 0.55, b = 0.42, a = 1 },
-		durationColorHigh = { r = 0.27, g = 0.37, b = 0.29, a = 1 },
-		mine = true,
-	},
+    if not Grid:IsClassicWow() then
+	    [GridStatusAuras:StatusForSpell("Rejuvenation (Germination)", true)] = {
+	    	-- 155777
+	    	desc = format(L["Buff: %s"], spell_names["Rejuvenation (Germination)"]),
+	    	buff = spell_names["Rejuvenation (Germination)"],
+	    	text = GridStatusAuras:TextForSpell(spell_names["Rejuvenation (Germination)"]),
+	    	color = { r = 0.66, g = 0.55, b = 1, a = 1 },
+	    	durationColorLow = { r = 0.66, g = 0.55, b = 1, a = 1 },
+	    	durationColorMiddle = { r = 0.46, g = 0.38, b = 0.7, a = 1 },
+	    	durationColorHigh = { r = 0.33, g = 0.27, b = 0.5, a = 1 },
+	    	mine = true,
+	    },
+	    [GridStatusAuras:StatusForSpell("Wild Growth", true)] = {
+	    	-- 48438
+	    	desc = format(L["Buff: %s"], spell_names["Wild Growth"]),
+	    	buff = spell_names["Wild Growth"],
+	    	text = GridStatusAuras:TextForSpell(spell_names["Wild Growth"]),
+	    	color = { r = 0.56, g = 0.85, b = 0.62, a = 1 },
+	    	durationColorLow = { r = 0.56, g = 0.85, b = 0.62, a = 1 },
+	    	durationColorMiddle = { r = 0.39, g = 0.55, b = 0.42, a = 1 },
+	    	durationColorHigh = { r = 0.27, g = 0.37, b = 0.29, a = 1 },
+	    	mine = true,
+	    },
+    end
 
 	---------------------
 	-- Monk
 	---------------------
-	[GridStatusAuras:StatusForSpell("Enveloping Mist", true)] = {
-		-- 124682
-		buff = spell_names["Enveloping Mist"],
-		desc = format(L["Buff: %s"], spell_names["Enveloping Mist"]),
-		text = GridStatusAuras:TextForSpell(spell_names["Enveloping Mist"]),
-		color = { r = 0.2, g = 1, b = 0.2, a = 1 },
-		mine = true,
-	},
-	[GridStatusAuras:StatusForSpell("Essence Font", true)] = {
-		-- 191837
-		buff = spell_names["Essence Font"],
-		desc = format(L["Buff: %s"], spell_names["Essence Font"]),
-		text = GridStatusAuras:TextForSpell(spell_names["Essence Font"]),
-		color = { r = 0, g = 0.7, b = 0.7, a = 1 },
-		mine = true,
-	},
-	[GridStatusAuras:StatusForSpell("Life Cocoon", true)] = {
-		-- 116849
-		buff = spell_names["Life Cocoon"],
-		desc = format(L["Buff: %s"], spell_names["Life Cocoon"]),
-		text = GridStatusAuras:TextForSpell(spell_names["Life Cocoon"]),
-		color = { r = 0.8, g = 0.8, b = 0.4, a = 1 },
-	},
-	[GridStatusAuras:StatusForSpell("Renewing Mist", true)] = {
-		-- 115151
-		buff = spell_names["Renewing Mist"],
-		desc = format(L["Buff: %s"], spell_names["Renewing Mist"]),
-		text = GridStatusAuras:TextForSpell(spell_names["Renewing Mist"]),
-		color = { r = 0.4, g = 0, b = 0.8, a = 1 },
-		mine = true,
-	},
-	[GridStatusAuras:StatusForSpell("Soothing Mist", true)] = {
-		-- 115175
-		buff = spell_names["Soothing Mist"],
-		desc = format(L["Buff: %s"], spell_names["Soothing Mist"]),
-		text = GridStatusAuras:TextForSpell(spell_names["Soothing Mist"]),
-		color = { r = 0.8, g = 1, b = 0.3, a = 1 },
-		mine = true,
-	},
+    if not Grid:IsClassicWow() then
+	    [GridStatusAuras:StatusForSpell("Enveloping Mist", true)] = {
+	    	-- 124682
+	    	buff = spell_names["Enveloping Mist"],
+	    	desc = format(L["Buff: %s"], spell_names["Enveloping Mist"]),
+	    	text = GridStatusAuras:TextForSpell(spell_names["Enveloping Mist"]),
+	    	color = { r = 0.2, g = 1, b = 0.2, a = 1 },
+	    	mine = true,
+	    },
+	    [GridStatusAuras:StatusForSpell("Essence Font", true)] = {
+	    	-- 191837
+	    	buff = spell_names["Essence Font"],
+	    	desc = format(L["Buff: %s"], spell_names["Essence Font"]),
+	    	text = GridStatusAuras:TextForSpell(spell_names["Essence Font"]),
+	    	color = { r = 0, g = 0.7, b = 0.7, a = 1 },
+	    	mine = true,
+	    },
+	    [GridStatusAuras:StatusForSpell("Life Cocoon", true)] = {
+	    	-- 116849
+	    	buff = spell_names["Life Cocoon"],
+	    	desc = format(L["Buff: %s"], spell_names["Life Cocoon"]),
+	    	text = GridStatusAuras:TextForSpell(spell_names["Life Cocoon"]),
+	    	color = { r = 0.8, g = 0.8, b = 0.4, a = 1 },
+	    },
+	    [GridStatusAuras:StatusForSpell("Renewing Mist", true)] = {
+	    	-- 115151
+	    	buff = spell_names["Renewing Mist"],
+	    	desc = format(L["Buff: %s"], spell_names["Renewing Mist"]),
+	    	text = GridStatusAuras:TextForSpell(spell_names["Renewing Mist"]),
+	    	color = { r = 0.4, g = 0, b = 0.8, a = 1 },
+	    	mine = true,
+	    },
+	    [GridStatusAuras:StatusForSpell("Soothing Mist", true)] = {
+	    	-- 115175
+	    	buff = spell_names["Soothing Mist"],
+	    	desc = format(L["Buff: %s"], spell_names["Soothing Mist"]),
+	    	text = GridStatusAuras:TextForSpell(spell_names["Soothing Mist"]),
+	    	color = { r = 0.8, g = 1, b = 0.3, a = 1 },
+	    	mine = true,
+	    },
+    end
 
 	---------------------
 	-- Paladin
 	---------------------
-	[GridStatusAuras:StatusForSpell("Beacon of Faith", true)] = {
-		-- 156910
-		desc = format(L["Buff: %s"], spell_names["Beacon of Faith"]),
-		buff = spell_names["Beacon of Faith"],
-		text = GridStatusAuras:TextForSpell(spell_names["Beacon of Faith"]),
-		color = { r = 0.5, g = 0.7, b = 0.3, a = 1 },
-		durationColorLow = { r = 1, g = 0, b = 0, a = 1 },
-		durationColorMiddle = { r = 0.49, g = 0.49, b = 0, a = 1 },
-		durationColorHigh = { r = 0.7, g = 0.7, b = 0, a = 1 },
-		durationLow = 5,
-		durationHigh = 10,
-		mine = true,
-	},
-	[GridStatusAuras:StatusForSpell("Beacon of Light", true)] = {
-		-- 53563
-		desc = format(L["Buff: %s"], spell_names["Beacon of Light"]),
-		buff = spell_names["Beacon of Light"],
-		text = GridStatusAuras:TextForSpell(spell_names["Beacon of Light"]),
-		color = { r = 0.5, g = 0.7, b = 0.3, a = 1 },
-		durationColorLow = { r = 1, g = 0, b = 0, a = 1 },
-		durationColorMiddle = { r = 0.49, g = 0.49, b = 0, a = 1 },
-		durationColorHigh = { r = 0.7, g = 0.7, b = 0, a = 1 },
-		durationLow = 5,
-		durationHigh = 10,
-		mine = true,
-	},
-	[GridStatusAuras:StatusForSpell("Beacon of Virtue", true)] = {
-		-- 200025
-		desc = format(L["Buff: %s"], spell_names["Beacon of Virtue"]),
-		buff = spell_names["Beacon of Virtue"],
-		text = GridStatusAuras:TextForSpell(spell_names["Beacon of Virtue"]),
-		color = { r = 0.95, g = 0.47, b = 0.66, a = 1 },
-		durationColorLow = { r = 0.95, g = 0.47, b = 0.66, a = 1 },
-		durationColorMiddle = { r = 0.7, g = 0.35, b = 0.49, a = 1 },
-		durationColorHigh = { r = 0.5, g = 0.25, b = 0.35, a = 1 },
-		mine = true,
-	},
-	[GridStatusAuras:StatusForSpell("Sacred Dawn")] = {
-		-- 243174
-		desc = format(L["Debuff: %s"], spell_names["Sacred Dawn"]),
-		debuff = spell_names["Sacred Dawn"],
-		text = GridStatusAuras:TextForSpell(spell_names["Sacred Dawn"]),
-		color = { r = 0.95, g = 1, b = 0.7, a = 1 },
-		durationColorLow = { r = 0.95, g = 1, b = 0.7, a = 1 },
-		durationColorMiddle = { r = 0.66, g = 0.7, b = 0.49, a = 1 },
-		durationColorHigh = { r = 0.43, g = 0.45, b = 0.32, a = 1 },
-	},
-	[GridStatusAuras:StatusForSpell("Tyr's Deliverance")] = {
-		-- 200654
-		desc = format(L["Debuff: %s"], spell_names["Tyr's Deliverance"]),
-		debuff = spell_names["Tyr's Deliverance"],
-		text = GridStatusAuras:TextForSpell(spell_names["Tyr's Deliverance"]),
-		color = { r = 0.95, g = 0.82, b = 0.33, a = 1 },
-		durationColorLow = { r = 0.95, g = 0.82, b = 0.33, a = 1 },
-		durationColorMiddle = { r = 0.65, g = 0.56, b = 0.23, a = 1 },
-		durationColorHigh = { r = 0.45, g = 0.38, b = 0.16, a = 1 },
-	},
+    if not Grid:IsClassicWow() then
+	    [GridStatusAuras:StatusForSpell("Beacon of Faith", true)] = {
+	    	-- 156910
+	    	desc = format(L["Buff: %s"], spell_names["Beacon of Faith"]),
+	    	buff = spell_names["Beacon of Faith"],
+	    	text = GridStatusAuras:TextForSpell(spell_names["Beacon of Faith"]),
+	    	color = { r = 0.5, g = 0.7, b = 0.3, a = 1 },
+	    	durationColorLow = { r = 1, g = 0, b = 0, a = 1 },
+	    	durationColorMiddle = { r = 0.49, g = 0.49, b = 0, a = 1 },
+	    	durationColorHigh = { r = 0.7, g = 0.7, b = 0, a = 1 },
+	    	durationLow = 5,
+	    	durationHigh = 10,
+	    	mine = true,
+	    },
+	    [GridStatusAuras:StatusForSpell("Beacon of Light", true)] = {
+	    	-- 53563
+	    	desc = format(L["Buff: %s"], spell_names["Beacon of Light"]),
+	    	buff = spell_names["Beacon of Light"],
+	    	text = GridStatusAuras:TextForSpell(spell_names["Beacon of Light"]),
+	    	color = { r = 0.5, g = 0.7, b = 0.3, a = 1 },
+	    	durationColorLow = { r = 1, g = 0, b = 0, a = 1 },
+	    	durationColorMiddle = { r = 0.49, g = 0.49, b = 0, a = 1 },
+	    	durationColorHigh = { r = 0.7, g = 0.7, b = 0, a = 1 },
+	    	durationLow = 5,
+	    	durationHigh = 10,
+	    	mine = true,
+	    },
+	    [GridStatusAuras:StatusForSpell("Beacon of Virtue", true)] = {
+	    	-- 200025
+	    	desc = format(L["Buff: %s"], spell_names["Beacon of Virtue"]),
+	    	buff = spell_names["Beacon of Virtue"],
+	    	text = GridStatusAuras:TextForSpell(spell_names["Beacon of Virtue"]),
+	    	color = { r = 0.95, g = 0.47, b = 0.66, a = 1 },
+	    	durationColorLow = { r = 0.95, g = 0.47, b = 0.66, a = 1 },
+	    	durationColorMiddle = { r = 0.7, g = 0.35, b = 0.49, a = 1 },
+	    	durationColorHigh = { r = 0.5, g = 0.25, b = 0.35, a = 1 },
+	    	mine = true,
+	    },
+	    [GridStatusAuras:StatusForSpell("Sacred Dawn")] = {
+	    	-- 243174
+	    	desc = format(L["Debuff: %s"], spell_names["Sacred Dawn"]),
+	    	debuff = spell_names["Sacred Dawn"],
+	    	text = GridStatusAuras:TextForSpell(spell_names["Sacred Dawn"]),
+	    	color = { r = 0.95, g = 1, b = 0.7, a = 1 },
+	    	durationColorLow = { r = 0.95, g = 1, b = 0.7, a = 1 },
+	    	durationColorMiddle = { r = 0.66, g = 0.7, b = 0.49, a = 1 },
+	    	durationColorHigh = { r = 0.43, g = 0.45, b = 0.32, a = 1 },
+	    },
+	    [GridStatusAuras:StatusForSpell("Tyr's Deliverance")] = {
+	    	-- 200654
+	    	desc = format(L["Debuff: %s"], spell_names["Tyr's Deliverance"]),
+	    	debuff = spell_names["Tyr's Deliverance"],
+	    	text = GridStatusAuras:TextForSpell(spell_names["Tyr's Deliverance"]),
+	    	color = { r = 0.95, g = 0.82, b = 0.33, a = 1 },
+	    	durationColorLow = { r = 0.95, g = 0.82, b = 0.33, a = 1 },
+	    	durationColorMiddle = { r = 0.65, g = 0.56, b = 0.23, a = 1 },
+	    	durationColorHigh = { r = 0.45, g = 0.38, b = 0.16, a = 1 },
+	    },
+    end
 	[GridStatusAuras:StatusForSpell("Forbearance")] = {
 		-- 25771
 		desc = format(L["Debuff: %s"], spell_names["Forbearance"]),
@@ -378,46 +386,48 @@ GridStatusAuras.defaultDB = {
 	---------------------
 	-- Priest
 	---------------------
-	[GridStatusAuras:StatusForSpell("Atonement", true)] = {
-		-- 214206
-		buff = spell_names["Atonement"],
-		desc = format(L["Buff: %s"], spell_names["Atonement"]),
-		text = GridStatusAuras:TextForSpell(spell_names["Atonement"]),
-		color = { r = 0.2, g = 0.8, b = 1, a = 1 },
-		mine = true,
-	},
-	[GridStatusAuras:StatusForSpell("Clarity of Will", true)] = {
-		-- 152118
-		desc = format(L["Buff: %s"], spell_names["Clarity of Will"]),
-		buff = spell_names["Clarity of Will"],
-		text = GridStatusAuras:TextForSpell(spell_names["Clarity of Will"]),
-		color = { r = 0.8, g = 0.8, b = 0, a = 1 },
-		durationColorLow = { r = 1, g = 0, b = 0, a = 1 },
-		durationColorMiddle = { r = 0.56, g = 0.56, b = 0, a = 1 },
-		durationColorHigh = { r = 0.8, g = 0.8, b = 0, a = 1 },
-	},
-	[GridStatusAuras:StatusForSpell("Guardian Spirit", true)] = {
-		-- 47788
-		desc = format(L["Buff: %s"], spell_names["Guardian Spirit"]),
-		buff = spell_names["Guardian Spirit"],
-		text = GridStatusAuras:TextForSpell(spell_names["Guardian Spirit"]),
-		color = { r = 0.4, g = 0.73, b = 1, a = 1 },
-		durationColorLow = { r = 0.4, g = 0.73, b = 1, a = 1 },
-		durationColorMiddle = { r = 0.24, g = 0.54, b = 0.8, a = 1 },
-		durationColorHigh = { r = 0.13, g = 0.41, b = 0.65, a = 1 },
-		mine = true,
-	},
-	[GridStatusAuras:StatusForSpell("Light of T'uure", true)] = {
-		-- 208065
-		desc = format(L["Buff: %s"], spell_names["Light of T'uure"]),
-		buff = spell_names["Light of T'uure"],
-		text = GridStatusAuras:TextForSpell(spell_names["Light of T'uure"]),
-		color = { r = 0.33, g = 0.46, b = 1, a = 1 },
-		durationColorLow = { r = 0.33, g = 0.46, b = 1, a = 1 },
-		durationColorMiddle = { r = 0.24, g = 0.33, b = 0.7, a = 1 },
-		durationColorHigh = { r = 0.17, g = 0.23, b = 0.5, a = 1 },
-		mine = true,
-	},
+    if not Grid:IsClassicWow() then
+	    [GridStatusAuras:StatusForSpell("Atonement", true)] = {
+	    	-- 214206
+	    	buff = spell_names["Atonement"],
+	    	desc = format(L["Buff: %s"], spell_names["Atonement"]),
+	    	text = GridStatusAuras:TextForSpell(spell_names["Atonement"]),
+	    	color = { r = 0.2, g = 0.8, b = 1, a = 1 },
+	    	mine = true,
+	    },
+	    [GridStatusAuras:StatusForSpell("Clarity of Will", true)] = {
+	    	-- 152118
+	    	desc = format(L["Buff: %s"], spell_names["Clarity of Will"]),
+	    	buff = spell_names["Clarity of Will"],
+	    	text = GridStatusAuras:TextForSpell(spell_names["Clarity of Will"]),
+	    	color = { r = 0.8, g = 0.8, b = 0, a = 1 },
+	    	durationColorLow = { r = 1, g = 0, b = 0, a = 1 },
+	    	durationColorMiddle = { r = 0.56, g = 0.56, b = 0, a = 1 },
+	    	durationColorHigh = { r = 0.8, g = 0.8, b = 0, a = 1 },
+	    },
+	    [GridStatusAuras:StatusForSpell("Guardian Spirit", true)] = {
+	    	-- 47788
+	    	desc = format(L["Buff: %s"], spell_names["Guardian Spirit"]),
+	    	buff = spell_names["Guardian Spirit"],
+	    	text = GridStatusAuras:TextForSpell(spell_names["Guardian Spirit"]),
+	    	color = { r = 0.4, g = 0.73, b = 1, a = 1 },
+	    	durationColorLow = { r = 0.4, g = 0.73, b = 1, a = 1 },
+	    	durationColorMiddle = { r = 0.24, g = 0.54, b = 0.8, a = 1 },
+	    	durationColorHigh = { r = 0.13, g = 0.41, b = 0.65, a = 1 },
+	    	mine = true,
+	    },
+	    [GridStatusAuras:StatusForSpell("Light of T'uure", true)] = {
+	    	-- 208065
+	    	desc = format(L["Buff: %s"], spell_names["Light of T'uure"]),
+	    	buff = spell_names["Light of T'uure"],
+	    	text = GridStatusAuras:TextForSpell(spell_names["Light of T'uure"]),
+	    	color = { r = 0.33, g = 0.46, b = 1, a = 1 },
+	    	durationColorLow = { r = 0.33, g = 0.46, b = 1, a = 1 },
+	    	durationColorMiddle = { r = 0.24, g = 0.33, b = 0.7, a = 1 },
+	    	durationColorHigh = { r = 0.17, g = 0.23, b = 0.5, a = 1 },
+	    	mine = true,
+	    },
+    end
 	[GridStatusAuras:StatusForSpell("Power Word: Fortitude", true)] = {
 		-- 21562
 		desc = format(L["Buff: %s"], spell_names["Power Word: Fortitude"]),
@@ -436,14 +446,16 @@ GridStatusAuras.defaultDB = {
 		durationColorMiddle = { r = 0.56, g = 0.56, b = 0, a = 1 },
 		durationColorHigh = { r = 0.8, g = 0.8, b = 0, a = 1 },
 	},
-	[GridStatusAuras:StatusForSpell("Prayer of Mending", true)] = {
-		-- 33076, 41635
-		buff = spell_names["Prayer of Mending"],
-		desc = format(L["Buff: %s"], spell_names["Prayer of Mending"]),
-		text = GridStatusAuras:TextForSpell(spell_names["Prayer of Mending"]),
-		color = { r = 0.2, g = 0.8, b = 1, a = 1 },
-		mine = true,
-	},
+    if not Grid:IsClassicWow() then
+	    [GridStatusAuras:StatusForSpell("Prayer of Mending", true)] = {
+	    	-- 33076, 41635
+	    	buff = spell_names["Prayer of Mending"],
+	    	desc = format(L["Buff: %s"], spell_names["Prayer of Mending"]),
+	    	text = GridStatusAuras:TextForSpell(spell_names["Prayer of Mending"]),
+	    	color = { r = 0.2, g = 0.8, b = 1, a = 1 },
+	    	mine = true,
+	    },
+    end
 	[GridStatusAuras:StatusForSpell("Renew", true)] = {
 		-- 139
 		desc = format(L["Buff: %s"], spell_names["Renew"]),
@@ -459,24 +471,26 @@ GridStatusAuras.defaultDB = {
 	---------------------
 	-- Shaman
 	---------------------
-	[GridStatusAuras:StatusForSpell("Earth Shield", true)] = {
-		-- 204288
-		desc = format(L["Buff: %s"], spell_names["Earth Shield"]),
-		buff = spell_names["Earth Shield"],
-		text = GridStatusAuras:TextForSpell(spell_names["Earth Shield"]),
-		color = { r = 0.2, g = 1, b = 0.2, a = 1 },
-	},
-	[GridStatusAuras:StatusForSpell("Riptide", true)] = {
-		-- 61295
-		desc = format(L["Buff: %s"], spell_names["Riptide"]),
-		buff = spell_names["Riptide"],
-		text = GridStatusAuras:TextForSpell(spell_names["Riptide"]),
-		color = { r = 0.4, g = 0, b = 0.8, a = 1 },
-		durationColorLow = { r = 1, g = 0, b = 0, a = 1 },
-		durationColorMiddle = { r = 0.28, g = 0, b = 0.56, a = 1 },
-		durationColorHigh = { r = 0.4, g = 0, b = 0.8, a = 1 },
-		mine = true,
-	},
+    if not Grid:IsClassicWow() then
+	    [GridStatusAuras:StatusForSpell("Earth Shield", true)] = {
+	    	-- 204288
+	    	desc = format(L["Buff: %s"], spell_names["Earth Shield"]),
+	    	buff = spell_names["Earth Shield"],
+	    	text = GridStatusAuras:TextForSpell(spell_names["Earth Shield"]),
+	    	color = { r = 0.2, g = 1, b = 0.2, a = 1 },
+	    },
+	    [GridStatusAuras:StatusForSpell("Riptide", true)] = {
+	    	-- 61295
+	    	desc = format(L["Buff: %s"], spell_names["Riptide"]),
+	    	buff = spell_names["Riptide"],
+	    	text = GridStatusAuras:TextForSpell(spell_names["Riptide"]),
+	    	color = { r = 0.4, g = 0, b = 0.8, a = 1 },
+	    	durationColorLow = { r = 1, g = 0, b = 0, a = 1 },
+	    	durationColorMiddle = { r = 0.28, g = 0, b = 0.56, a = 1 },
+	    	durationColorHigh = { r = 0.4, g = 0, b = 0.8, a = 1 },
+	    	mine = true,
+	    },
+    end
 }
 
 local default_auras = {}

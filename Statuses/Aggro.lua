@@ -22,8 +22,10 @@ local GridStatusAggro = Grid:NewStatusModule("GridStatusAggro")
 GridStatusAggro.menuName = L["Aggro"]
 
 local function getthreatcolor(status)
-	local r, g, b = GetThreatStatusColor(status)
-	return { r = r, g = g, b = b, a = 1 }
+    if not Grid:IsClassicWow() then
+	    local r, g, b = GetThreatStatusColor(status)
+	    return { r = r, g = g, b = b, a = 1 }
+    end
 end
 
 GridStatusAggro.defaultDB = {
@@ -139,7 +141,9 @@ end
 
 function GridStatusAggro:OnStatusEnable(status)
 	if status == "alert_aggro" then
-		self:RegisterEvent("UNIT_THREAT_SITUATION_UPDATE", "UpdateUnit")
+        if not Grid:IsClassicWow() then
+		    self:RegisterEvent("UNIT_THREAT_SITUATION_UPDATE", "UpdateUnit")
+        end
 		self:RegisterEvent("PLAYER_ENTERING_WORLD", "UpdateAllUnits")
 		self:UpdateAllUnits()
 	end
@@ -147,7 +151,9 @@ end
 
 function GridStatusAggro:OnStatusDisable(status)
 	if status == "alert_aggro" then
-		self:UnregisterEvent("UNIT_THREAT_SITUATION_UPDATE")
+        if not Grid:IsClassicWow() then
+		    self:UnregisterEvent("UNIT_THREAT_SITUATION_UPDATE")
+        end
 		self:UnregisterEvent("PLAYER_ENTERING_WORLD")
 		self.core:SendStatusLostAllUnits("alert_aggro")
 	end
@@ -165,14 +171,24 @@ end
 
 ------------------------------------------------------------------------
 
+if not Grid.IsClassicWow() then
 local UnitGUID, UnitIsVisible, UnitThreatSituation
 	 = UnitGUID, UnitIsVisible, UnitThreatSituation
+end
+
+local UnitGUID, UnitIsVisible
+	 = UnitGUID, UnitIsVisible
 
 function GridStatusAggro:UpdateUnit(event, unit, guid)
 	local guid = guid or unit and UnitGUID(unit)
 	if not guid or not GridRoster:IsGUIDInRaid(guid) then return end -- sometimes unit can be nil or invalid, wtf?
-
-	local status = UnitIsVisible(unit) and UnitThreatSituation(unit) or 0
+    
+    if not Grid.IsClassicWow() then
+	    local status = UnitIsVisible(unit) and UnitThreatSituation(unit) or 0
+    else 
+        local status = UnitIsVisible(unit) or 0
+    end
+    
 
 	local settings = self.db.profile.alert_aggro
 	local threat = settings.threat

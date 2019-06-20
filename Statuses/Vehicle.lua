@@ -37,8 +37,10 @@ function GridStatusVehicle:OnStatusEnable(status)
 	if status == "alert_vehicleui" then return end
 
 	self:RegisterEvent("PLAYER_ENTERING_WORLD", "UpdateAllUnits")
-	self:RegisterEvent("UNIT_ENTERED_VEHICLE", "UpdateUnit")
-	self:RegisterEvent("UNIT_EXITED_VEHICLE", "UpdateUnit")
+    if not Grid.IsClassicWow() then
+	    self:RegisterEvent("UNIT_ENTERED_VEHICLE", "UpdateUnit")
+	    self:RegisterEvent("UNIT_EXITED_VEHICLE", "UpdateUnit")
+    end
 
 	self:UpdateAllUnits()
 end
@@ -47,8 +49,10 @@ function GridStatusVehicle:OnStatusDisable(status)
 	if status ~= "alert_vehicleui" then return end
 
 	self:UnregisterEvent("PLAYER_ENTERING_WORLD")
-	self:UnregisterEvent("UNIT_ENTERED_VEHICLE")
-	self:UnregisterEvent("UNIT_EXITED_VEHICLE")
+    if not Grid.IsClassicWow() then
+	    self:UnregisterEvent("UNIT_ENTERED_VEHICLE")
+	    self:UnregisterEvent("UNIT_EXITED_VEHICLE")
+    end
 
 	self.core:SendStatusLostAllUnits("alert_vehicleui")
 end

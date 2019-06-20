@@ -48,7 +48,9 @@ function GridStatusTarget:OnStatusEnable(status)
 		self:RegisterEvent("PLAYER_TARGET_CHANGED")
 		self:PLAYER_TARGET_CHANGED()
 	elseif status == "player_focus" then
-		self:RegisterEvent("PLAYER_FOCUS_CHANGED")
+        if not Grid:IsClassicWow() then
+		    self:RegisterEvent("PLAYER_FOCUS_CHANGED")
+        end
 		self:PLAYER_FOCUS_CHANGED()
 	end
 end
@@ -58,7 +60,9 @@ function GridStatusTarget:OnStatusDisable(status)
 		self:UnregisterEvent("PLAYER_TARGET_CHANGED")
 		self.core:SendStatusLostAllUnits("player_target")
 	elseif status == "player_focus" then
-		self:UnregisterEvent("PLAYER_FOCUS_CHANGED")
+        if not Grid:IsClassicWow() then
+		    self:UnregisterEvent("PLAYER_FOCUS_CHANGED")
+        end
 		self.core:SendStatusLostAllUnits("player_focus")
 	end
 end

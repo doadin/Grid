@@ -646,9 +646,11 @@ function GridFrame:OnEnable()
 	self:RegisterMessage("Grid_ColorsChanged", "UpdateAllFrames")
 
 	self:RegisterEvent("PLAYER_ENTERING_WORLD", "UpdateFrameUnits")
+    if not Grid:IsClassicWow() then
+        self:RegisterEvent("UNIT_ENTERED_VEHICLE", "SendMessage_UpdateFrameUnits")
+        self:RegisterEvent("UNIT_EXITED_VEHICLE", "SendMessage_UpdateFrameUnits")
+    end
 
-	self:RegisterEvent("UNIT_ENTERED_VEHICLE", "SendMessage_UpdateFrameUnits")
-	self:RegisterEvent("UNIT_EXITED_VEHICLE", "SendMessage_UpdateFrameUnits")
 	self:RegisterMessage("Grid_RosterUpdated", "SendMessage_UpdateFrameUnits")
 
 	if self.db.profile.throttleUpdates then
